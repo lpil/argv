@@ -11,7 +11,7 @@ load() ->
             {P, Rest};
         _ ->
             {ok, Cwd} = file:get_cwd(),
-            {Cwd, PlainArguments}
+            {list_to_binary(Cwd), PlainArguments}
     end,
     {Runtime, Program, Arguments}.
 

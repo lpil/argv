@@ -1,6 +1,5 @@
 name = "argv"
 version = "1.0.0"
-dev-dependencies = { gleescript = "~> 1.0"}
 
 # Fill out these fields if you intend to generate HTML documentation or publish
 # your project to the Hex package manager.
@@ -13,5 +12,5 @@ dev-dependencies = { gleescript = "~> 1.0"}
 [javascript.deno]
 allow_read = true
 
-[dependencies]
+[dev-dependencies]
 gleam_stdlib = "~> 0.32"

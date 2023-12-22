@@ -21,9 +21,3 @@ pub fn load() -> Argv {
 @external(erlang, "argv_ffi", "load")
 @external(javascript, "./argv_ffi.mjs", "load")
 fn do() -> #(String, String, String)
-
-import gleam/io
-
-pub fn main() {
-  io.debug(load())
-}
