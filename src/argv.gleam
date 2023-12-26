@@ -9,7 +9,7 @@ pub type Argv {
     /// be determined.
     program: String,
     /// The command line arguments passed to the program.
-    arguments: String,
+    arguments: List(String),
   )
 }
 
@@ -20,4 +20,4 @@ pub fn load() -> Argv {
 
 @external(erlang, "argv_ffi", "load")
 @external(javascript, "./argv_ffi.mjs", "load")
-fn do() -> #(String, String, String)
+fn do() -> #(String, String, List(String))
