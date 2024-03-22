@@ -4,7 +4,9 @@
 
 load() ->
     Runtime = <<(stringarg(bindir))/binary, "/", (stringarg(progname))/binary>>,
-    PlainArguments = lists:map(fun list_to_binary/1, init:get_plain_arguments()),
+    PlainArguments = lists:map(
+        fun(Arg) -> unicode:characters_to_binary(Arg, utf8) end, init:get_plain_arguments()
+    ),
     {Program, Arguments} = case init:get_argument(escript) of
         % We're in an escript, so the first argument is the executable name
         {ok, _} ->
@@ -14,7 +16,7 @@ load() ->
         % We're not in a escript. Assume the cwd is the project root.
         _ ->
             {ok, Cwd} = file:get_cwd(),
-            {list_to_binary(Cwd), PlainArguments}
+            {unicode:characters_to_binary(Cwd, utf8), PlainArguments}
     end,
     {Runtime, Program, Arguments}.
 
