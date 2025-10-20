@@ -3,7 +3,7 @@
 -export([load/0]).
 
 load() ->
-    Runtime = <<(stringarg(bindir))/binary, "/", (stringarg(progname))/binary>>,
+    Runtime = create_path(stringarg(bindir), stringarg(progname), os:type()),
     PlainArguments = lists:map(
         fun(Arg) -> unicode:characters_to_binary(Arg, utf8) end, init:get_plain_arguments()
     ),
@@ -22,6 +22,11 @@ load() ->
 
 stringarg(Name) ->
     case init:get_argument(Name) of
-        {ok, [[Value]]} -> list_to_binary(Value);
+        {ok, [[Value]]} -> unicode:characters_to_binary(Value);
         _ -> <<>>
     end.
+
+create_path(Bindir, Progname, {unix, _}) ->
+    <<Bindir/binary, "/", Progname/binary>>;
+create_path(Bindir, Progname, {win32, _}) ->
+    <<Bindir/binary, "\\", Progname/binary>>.
