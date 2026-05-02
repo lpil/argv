@@ -12,4 +12,4 @@ links = [
 allow_read = true
 
 [dev-dependencies]
-gleam_stdlib = "~> 0.32"
+gleam_stdlib = "~> 0.32 or ~> 1.0"
