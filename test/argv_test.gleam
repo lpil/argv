@@ -1,8 +1,7 @@
-import gleam/io
 import argv
 
 pub fn main() {
   let argv = argv.load()
-  io.debug(argv)
+  echo argv
   let assert [] = argv.load().arguments
 }
