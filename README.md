@@ -6,7 +6,7 @@ A cross platform library for getting the command line arguments.
 [![Hex Docs](https://img.shields.io/badge/hex-docs-ffaff3)](https://hexdocs.pm/argv/)
 
 ```sh
-gleam add argv
+gleam add argv@1
 ```
 
 ```gleam
