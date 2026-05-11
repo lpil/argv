@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.0.2 - 2026-05-11
+## v1.1.0 - 2026-05-11
 
 - Updated dependency specification to allow for `gleam_stdlib` 1.0.
 
