@@ -3,7 +3,7 @@
 -export([load/0]).
 
 load() ->
-    Runtime = <<(stringarg(bindir))/binary, "/", (stringarg(progname))/binary>>,
+    Runtime = filename:nativename(<<(stringarg(bindir))/binary, "/", (stringarg(progname))/binary>>),
     PlainArguments = lists:map(
         fun(Arg) -> unicode:characters_to_binary(Arg, utf8) end, init:get_plain_arguments()
     ),
@@ -22,6 +22,6 @@ load() ->
 
 stringarg(Name) ->
     case init:get_argument(Name) of
-        {ok, [[Value]]} -> list_to_binary(Value);
+        {ok, [[Value]]} -> unicode:characters_to_binary(Value);
         _ -> <<>>
     end.
